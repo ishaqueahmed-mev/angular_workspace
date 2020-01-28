@@ -1,6 +1,6 @@
-# This repo is created for maintaining multiple angular applications in a single workspace.
+# Maintaining multiple angular applications in a single workspace.
 
-# 1. CREATE AN EMPTY WORKSPACE :
+# 1. Create an empty workspace :
     ng new <workspace_name> --createApplication=false --directory=multiApps --interactive=false
 
 The --createApplication=false parameter avoids the creation of an initial application (default value is true). Otherwise, the Angular CLI creates an application in the src folder of the new workspace. It’s cleaner to generate all applications in the sub-folder projects of the workspace.
@@ -9,25 +9,25 @@ The --interactive=false parameter is just here to avoid being prompted for usele
 
 The --directory=frontend parameter is the directory name to create the workspace in. It defaults to the workspace name.
 
-# 2. CREATE APPLICATIONS WITHIN WORKSPACE:
+# 2. Create application within workspace:
 cd <workspace_name>
     ng g application admin --style=scss --routing=true
     ng g application front --style=scss --routing=true
     ng g application shared --style=scss --routing=false
     ...
 
-# 3. CREATE LIBRARIES IN WORKSPACE:
+# 3. Create libraries in workspace:
 cd <workspace_name>
     ng generate library tools
     ng generate library vendors
 
 -- we can check the structure in the config file angular.json
 
-# 4. CREATE A SHARED SERVICE
+# 4. Create a shared service
 cd <workspace_name>
     ng generate service hello-world --project=tools
 
-# 5. LAUNCHING THE APPLICATION
+# 5. Launching the application
 cd <workspace_name>
     ng serve --project=admin
 
