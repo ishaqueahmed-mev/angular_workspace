@@ -1,27 +1,38 @@
-# MultipleApps
+This repo is created for maintaining multiple angular applications in a single workspace.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+1. CREATE AN EMPTY WORKSPACE :
+    ng new <workspace_name> --createApplication=false --directory=multiApps --interactive=false
 
-## Development server
+The --createApplication=false parameter avoids the creation of an initial application (default value is true). Otherwise, the Angular CLI creates an application in the src folder of the new workspace. It’s cleaner to generate all applications in the sub-folder projects of the workspace.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+The --interactive=false parameter is just here to avoid being prompted for useless parameter values such as whether the initial app (which we don’t generate) should include a routing module or what CSS preprocessor to use.
 
-## Code scaffolding
+The --directory=frontend parameter is the directory name to create the workspace in. It defaults to the workspace name.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. CREATE APPLICATIONS WITHIN WORKSPACE:
+cd <workspace_name>
+    ng g application admin --style=scss --routing=true
+    ng g application front --style=scss --routing=true
+    ng g application shared --style=scss --routing=false
+    ...
 
-## Build
+3. CREATE LIBRARIES IN WORKSPACE:
+cd <workspace_name>
+    ng generate library tools
+    ng generate library vendors
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+-- we can check the structure in the config file angular.json
 
-## Running unit tests
+4. CREATE A SHARED SERVICE
+cd <workspace_name>
+    ng generate service hello-world --project=tools
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. LAUNCHING THE APPLICATION
+cd <workspace_name>
+    ng serve --project=admin
 
-## Running end-to-end tests
+    5.1 Serving Angular Apps on Specific Port and Base Href
+    - configure port(say 4222) in options object contained in serve in project name in angular.json, then run
+    ng serve --open --project=front --baseHref /front/
+    app witll start running on http://localhost:4222/front
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
