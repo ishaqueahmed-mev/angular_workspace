@@ -1,5 +1,7 @@
 # Maintaining multiple angular applications in a single workspace.
 
+CREDIT: https://octoperf.com/blog/2019/08/22/kraken-angular-workspace-multi-application-project/
+
 # 1. Create an empty workspace :
     ng new <workspace_name> --createApplication=false --directory=multiApps --interactive=false
 
@@ -35,6 +37,8 @@ cd into workspace_name
 
     5.1 Serving Angular Apps on Specific Port and Base Href
     - configure port(say 4222) in options object contained in serve in project name in angular.json, then run
+        
         ng serve --open --project=front --baseHref /front/
-    app witll start running on http://localhost:4222/front
+
+    - app will start running on http://localhost:4222/front
 
