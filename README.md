@@ -9,6 +9,8 @@ The --interactive=false parameter is just here to avoid being prompted for usele
 
 The --directory=frontend parameter is the directory name to create the workspace in. It defaults to the workspace name.
 
+cd into workspace_name
+
 # 2. Create application within workspace:
 
     ng g application admin --style=scss --routing=true
@@ -17,22 +19,22 @@ The --directory=frontend parameter is the directory name to create the workspace
     ...
 
 # 3. Create libraries in workspace:
-cd <workspace_name>
+
     ng generate library tools
     ng generate library vendors
 
 -- we can check the structure in the config file angular.json
 
 # 4. Create a shared service
-cd <workspace_name>
+
     ng generate service hello-world --project=tools
 
 # 5. Launching the application
-cd <workspace_name>
+
     ng serve --project=admin
 
     5.1 Serving Angular Apps on Specific Port and Base Href
     - configure port(say 4222) in options object contained in serve in project name in angular.json, then run
-    ng serve --open --project=front --baseHref /front/
+        ng serve --open --project=front --baseHref /front/
     app witll start running on http://localhost:4222/front
 
